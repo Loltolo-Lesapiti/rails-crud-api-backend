@@ -37,6 +37,20 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def update
+    task= Task.find_by(id: params[:id])
+    if task
+      if task.update(task_params)
+        render json: 'Task Update successfully', status: :ok
+      else
+        render json: {
+          error: 'Failed to update task'
+        }, status: :unprocessable_entity
+      end
+    else 
+      render json: {
+        error: 'Task was not found'
+      }, status: :not_found
+    end
   end
 
   def destroy
