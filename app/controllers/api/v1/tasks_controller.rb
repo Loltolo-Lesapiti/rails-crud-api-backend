@@ -11,6 +11,14 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def show
+    task= Task.find_by(id: params[:id])
+    if task
+      render json: task, status: :ok
+    else 
+      render json: {
+        error: 'Task not found'
+      }, status: :not_found
+    end 
   end
 
   def create
