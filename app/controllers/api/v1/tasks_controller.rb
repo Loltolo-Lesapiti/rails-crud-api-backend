@@ -1,5 +1,13 @@
 class Api::V1::TasksController < ApplicationController
   def index
+    tasks=Task.all
+    if tasks.any?
+      render json: tasks, status: :ok
+    else
+      render json: {
+        error: 'Data not found'
+      }, status: :not_found
+    end 
   end
 
   def show
