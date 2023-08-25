@@ -54,6 +54,15 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def destroy
+    task= Task.find_by(id: params[:id])
+    if task
+      task.destroy
+      render json: 'Task deleted successfully', status: :ok
+    else
+      render json: {
+        error: 'Task was not found'
+      }, status: :not_found
+    end
   end
   # Create a private method to make the parameters private.
   private
