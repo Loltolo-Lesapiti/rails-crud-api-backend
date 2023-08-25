@@ -6,12 +6,12 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def create
-    task= Task.new([
+    task= Task.new(
       name: task_params[:name],
       description: task_params[:description],
       completed: task_params[:completed]
-    ])
-    if task
+    )
+    if task.save
       render json: task, status: :created
     else
       render json: {
@@ -28,10 +28,6 @@ class Api::V1::TasksController < ApplicationController
   # Create a private method to make the parameters private.
   private
   def task_params
-    params.require(:task).permit([
-      name,
-      description,
-      completed
-    ])
+    params.require(:task).permit(:name,:description,:completed)
   end
 end
