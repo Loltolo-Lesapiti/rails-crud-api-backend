@@ -9,7 +9,7 @@
 class Application < Rails::Application
   config.middleware.insert_before 0, Rack::Cors do
     allow do
-      origins '*' # All origins are allowed
+      origins 'http://localhost:3001/' # All origins are allowed
       resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
     end
   end

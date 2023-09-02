@@ -148,6 +148,9 @@ GEM
     rake (13.0.6)
     reline (0.3.8)
       io-console (~> 0.5)
+    swagger-docs (0.2.9)
+      activesupport (>= 3)
+      rails (>= 3)
     thor (1.2.2)
     timeout (0.4.0)
     tzinfo (2.0.6)
@@ -169,6 +172,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.5)
+  swagger-docs
   tzinfo-data
 
 RUBY VERSION
